@@ -1,24 +1,13 @@
-document.addEventListener("DOMContentLoaded", function () {
-    let navbarToggler = document.querySelector(".navbar-toggler");
-    let navbarCollapse = document.querySelector(".navbar-collapse");
+$(document).ready(function () {
+    $("#menuToggle").click(function () {
+        $("#navbarMenu").toggleClass("active");
 
-    navbarToggler.addEventListener("click", function () {
-        if (navbarCollapse.classList.contains("show")) {
-            // If the navbar is open, close it
-            navbarCollapse.classList.remove("show");
-            navbarToggler.innerHTML = "<span class='navbar-toggler-icon'></span>";
+        let navbarToggler = $("#menuToggle");
+
+        if ($("#navbarMenu").hasClass("active")) {
+            navbarToggler.html("✖"); // Close (X)
         } else {
-            // If the navbar is closed, open it
-            navbarCollapse.classList.add("hide");
-            navbarToggler.innerHTML = "&#10006;"; // Cross icon
-        }
-    });
-
-    // Close the navbar when clicking outside (optional for better UX)
-    document.addEventListener("click", function (event) {
-        if (!navbarToggler.contains(event.target) && !navbarCollapse.contains(event.target)) {
-            navbarCollapse.classList.remove("show");
-            navbarToggler.innerHTML = "<span class='navbar-toggler-icon'></span>";
+            navbarToggler.html("☰"); // Menu (Hamburger)
         }
     });
 });
