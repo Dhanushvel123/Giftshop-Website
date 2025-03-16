@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Shop</title>
+    <link rel="icon" href="Images/favicon.png">
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Bootstrap Bundle (JS + Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+
+<!-- Giftos Title Centered -->
+<header class="text-center py-3">
+    <h1 class="fw-bold">GIFTOS</h1>
+</header>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+  <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <ul class="navbar-nav">
+              <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="#product">Shop</a></li>
+              <li class="nav-item"><a class="nav-link" href="#why">Why Us</a></li>
+              <li class="nav-item"><a class="nav-link" href="#review">Testimonial</a></li>
+              <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
+          </ul>
+      </div>
+      
+      <div class="d-flex">
+          <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+              <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+            </svg> Login
+          </a>
+          <a href="#product" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
+            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z"/>
+          </svg></a>
+          <a href="#gift" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+          </svg></a>
+      </div>
+  </div>
+</nav>
+
+<!-- Login Modal (Step 1) -->
+<div class="modal fade" id="loginModal" aria-hidden="true" aria-labelledby="loginModalLabel" tabindex="-1">
+<div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h1 class="modal-title fs-5" id="loginModalLabel">Login</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <form id="loginForm">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" style="border: 2px solid black;" class="form-control" id="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" style="border: 2px solid black;" class="form-control" id="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Success Modal (Step 2) -->
+<div class="modal fade" id="successModal" aria-hidden="true" aria-labelledby="successModalLabel" tabindex="-1">
+<div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h1 class="modal-title fs-5" id="successModalLabel">Login Successful</h1>
+      <button type="button" class="btn-close" onclick="reloadscreen()" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body text-center">
+      <svg xmlns="http://www.w3.org/2000/svg"  width="40" height="40" fill="currentColor" class="bi bi-check-circle-fill text-success" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+      </svg>
+      <p class="mt-3">You have logged in successfully!</p>
+      <button type="button" class="btn btn-secondary" onclick="reloadscreen()" data-bs-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Carousel -->
+<section class="slider_section" id="home">
+    <div class="slider_container">
+      <div id="carouselExampleIndicators" class="hc" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container">
+              <div class="row align-items-center">
+                <div class="col-md-6 text-white">
+                  <h1>Welcome To Our <br> Gift Shop</h1>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam quod minima inventore, a beatae nam obcaecati quas sint cumque sed expedita odit officiis, ipsum sunt nobis aliquid? Natus, sequi rerum.</p>
+                  <a href="#" class="btn btn-light">Contact Us</a>
+                </div>
+                <div class="col-md-6 text-center">
+                  <img src="Images/slider-img.png" alt="Gift Image" class="img-fluid">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container">
+              <div class="row align-items-center">
+                <div class="col-md-6 text-white">
+                  <h1>Exclusive Collections</h1>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus dignissimos dolorum placeat tenetur, corrupti aut! Qui odio sapiente quia illo consectetur, minus optio magnam beatae at corporis aliquam delectus accusamus.</p>
+                  <a href="#" class="btn btn-light">Contact Us</a>
+                </div>
+                <div class="col-md-6 text-center">
+                  <img src="Images/slider-img.png" alt="Gift Image" class="img-fluid">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Carousel Navigation -->
+        <div class="hc_btn-box">
+          <a class="hc-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+           
+              
+              <svg xmlns="http://www.w3.org/2000/svg" style="color:black;font-size:bold" width="24" height="24" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5"/>
+              </svg>
+          </a>
+          <a class="hc-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+            <svg xmlns="http://www.w3.org/2000/svg" style="color: black;font-size:bold" width="24" height="24" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- Latest Products Section -->
+<section class="latest-products text-center" id="product">
+    <div class="container">
+        <h2 class="section-title">LATEST PRODUCTS</h2>
+
+        <div class="row">
+            <!-- Product 1 -->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="product-card">
+                    <span class="new-label">New</span>
+                    <img src="Images/p1.png" alt="Ring">
+                    <h4>Ring</h4>
+                    <p>Price <span class="price">$200</span></p>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="product-card">
+                    <span class="new-label">New</span>
+                    <img src="Images/p2.png"  alt="Watch">
+                    <h4>Watch</h4>
+                    <p>Price <span class="price">$300</span></p>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="product-card">
+                    <span class="new-label">New</span>
+                    <img src="Images/p3.png" alt="Teddy Bear">
+                    <h4>Teddy Bear</h4>
+                    <p>Price <span class="price">$110</span></p>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="product-card">
+                    <span class="new-label">New</span>
+                    <img src="Images/p4.png" alt="Flower Bouquet">
+                    <h4>Flower Bouquet</h4>
+                    <p>Price <span class="price">$45</span></p>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="product-card">
+                    <span class="new-label">New</span>
+                    <img src="Images/p5.png" alt="Teddy Bear">
+                    <h4>Teddy Bear</h4>
+                    <p>Price <span class="price">$95</span></p>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="product-card">
+                    <span class="new-label">New</span>
+                    <img src="Images/p6.png" alt="Flower Bouquet">
+                    <h4>Flower Bouquet</h4>
+                    <p>Price <span class="price">$70</span></p>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="product-card">
+                    <span class="new-label">New</span>
+                    <img src="Images/p7.png" alt="Watch">
+                    <h4>Watch</h4>
+                    <p>Price <span class="price">$400</span></p>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="product-card">
+                    <span class="new-label">New</span>
+                    <img src="Images/p8.png" alt="Ring">
+                    <h4>Ring</h4>
+                    <p>Price <span class="price">$450</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- View All Products Button -->
+        <div class="text-center mt-4">
+            <a href="#" class="btn view-all-btn">View All Products</a>
+        </div>
+    </div>
+</section>
+
+<!-- New Arrivals Section -->
+<section class="arrival-section" id="arrival">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Left Side: Image -->
+            <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+                <img src="Images/saving-img.png" alt="Shopping Girl" class="arrival-image">
+            </div>
+
+            <!-- Right Side: Text & Buttons -->
+            <div class="col-lg-6 col-md-6 col-sm-12 text-center text-md-start">
+                <h2 class="arrival-title">BEST SAVINGS ON <br> NEW ARRIVALS</h2>
+                <p class="arrival-text">
+                    Qui ex dolore at repellat, quia neque doloribus omnis adipisci, ipsum eos odio 
+                    fugit ut eveniet blanditiis praesentium totam non nostrum dignissimos nihil 
+                    eius facere et eaque. Qui, animi obcaecati.
+                </p>
+                <div class="arrival-buttons">
+                    <a href="#" class="btn buy-now-btn">Buy Now</a>
+                    <a href="#" class="btn see-more-btn">See More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Why Shop With Us Section -->
+<section class="trade-container" id="why">
+    <div class="container text-center">
+        <h2 class="trade-title">WHY SHOP WITH US</h2>
+        <div class="row">
+            <!-- Feature 1 -->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="trade-box">
+                    <img src="Images/truck.svg" alt="Fast Delivery" class="trade-icon">
+                    <h4>Fast Delivery</h4>
+                    <p>Variations of passages of Lorem Ipsum available</p>
+                </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="trade-box">
+                    <img src="Images/free.svg" alt="Free Shipping" class="trade-icon">
+                    <h4>Free Shipping</h4>
+                    <p>Variations of passages of Lorem Ipsum available</p>
+                </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mx-auto">
+                <div class="trade-box">
+                    <img src="Images/high-quality.svg" alt="Best Quality" style="color: #8246bf;" class="trade-icon">
+                    <h4>Best Quality</h4>
+                    <p>Variations of passages of Lorem Ipsum available</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Gifts Section -->
+<section class="gifts-container" id="gift">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Left Side - Image -->
+            <div class="col-lg-6 col-md-12 text-center">
+                <img src="Images/gifts.png" alt="Gifts" class="gifts-image">
+            </div>
+
+            <!-- Right Side - Text & Buttons -->
+            <div class="col-lg-6 col-md-12">
+                <h2 class="gifts-title">GIFTS FOR YOUR LOVED ONES</h2>
+                <p class="gifts-text">
+                    Omnis ex nam laudantium odit illum harum, excepturi accusamus at corrupti, 
+                    velit blanditiis unde perspiciatis, vitae minus culpa? Beatae at aut 
+                    consequuntur porro adipisci aliquam eaque iste ducimus expedita accusantium?
+                </p>
+                <div class="gifts-buttons">
+                    <a href="#" class="btn btn-light">Buy Now</a>
+                    <a href="#" class="btn btn-purple">See More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Contact Section -->
+<section class="contact-container" id="contact">
+    <div class="container">
+        <h2 class="contact-title">CONTACT US</h2>
+        <div class="row align-items-center">
+            <!-- Left Side - Google Map -->
+            <div class="col-lg-6 col-md-12">
+                <iframe class="contact-map"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.999002387894!2d2.2922926156744966!3d48.858844779287746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fddf985fdbf%3A0x42126b3e5b8c2b5a!2sEiffel%20Tower!5e0!3m2!1sen!2sus!4v1630346323735!5m2!1sen!2sus"
+                    allowfullscreen="" loading="lazy"></iframe>
+            </div>
+
+            <!-- Right Side - Contact Form -->
+            <div class="col-lg-6 col-md-12">
+                <div class="contact-form">
+                    <input type="text" class="form-control" placeholder="Name" required>
+                    <input type="email" class="form-control" placeholder="Email" required>
+                    <input type="tel" class="form-control" placeholder="Phone" required>
+                    <textarea class="form-control" placeholder="Message" rows="4" required></textarea>
+                    <button type="submit" class="btn btn-danger  ">SEND</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<div class="container my-5" id="review">
+  <h2 class="testimonial-title">TESTIMONIAL</h2>
+
+  <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+      
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+          <div class="carousel-item active">
+              <div class="testimonial-box">
+                  <div class="testimonial-header">
+                      <div>
+                          <h4 class="customer-name">Brad Johns</h4>
+                          <p class="customer-role">Default model text</p>
+                      </div>
+                      <div class="quote-icon">
+                          <!-- Double Quote SVG Icon -->
+                          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-quote" viewBox="0 0 16 16">
+                              <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388q0-.527.062-1.054.093-.558.31-.992t.559-.683q.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 9 7.558V11a1 1 0 0 0 1 1zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612q0-.527.062-1.054.094-.558.31-.992.217-.434.559-.683.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 3 7.558V11a1 1 0 0 0 1 1z"/>
+                          </svg>
+                      </div>
+                  </div>
+                  <p class="customer-review">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus accusamus ullam nulla molestias atque, magnam magni iure id? Iste nisi libero quidem quas eius? Accusantium nobis nisi suscipit asperiores est.
+                 </p>
+              </div>
+          </div>
+          <div class="carousel-item">
+              <div class="testimonial-box">
+                  <div class="testimonial-header">
+                      <div>
+                          <h4 class="customer-name">Emily Carter</h4>
+                          <p class="customer-role">Default model text</p>
+                      </div>
+                      <div class="quote-icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-quote" viewBox="0 0 16 16">
+                              <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388q0-.527.062-1.054.093-.558.31-.992t.559-.683q.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 9 7.558V11a1 1 0 0 0 1 1zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612q0-.527.062-1.054.094-.558.31-.992.217-.434.559-.683.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 3 7.558V11a1 1 0 0 0 1 1z"/>
+                          </svg>
+                      </div>
+                  </div>
+                  <p class="customer-review">
+                    Variouseditors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Variouseditors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.                  </p>
+              </div>
+          </div>
+          <div class="carousel-item">
+            <div class="testimonial-box">
+                <div class="testimonial-header">
+                    <div>
+                        <h4 class="customer-name">Rochak</h4>
+                        <p class="customer-role">Default model text</p>
+                      </div>
+                    <div class="quote-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-quote" viewBox="0 0 16 16">
+                            <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388q0-.527.062-1.054.093-.558.31-.992t.559-.683q.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 9 7.558V11a1 1 0 0 0 1 1zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612q0-.527.062-1.054.094-.558.31-.992.217-.434.559-.683.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 3 7.558V11a1 1 0 0 0 1 1z"/>
+                        </svg>
+                    </div>
+                </div>
+                <p class="customer-review">
+                  Variouseditors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Variouseditors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.                </p>
+            </div>
+        </div>
+      </div>
+      <!-- Navigation buttons (Left & Right) -->
+      <button class="carousel-control-prev custom-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </button>
+      <button class="carousel-control-next custom-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </button>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            
+            <!-- Social Media Icons -->
+            <div class="social-icons text-center">
+                <a href="#"><svg fill="#ffffff" width="25px" height="25px" viewBox="0 0 32 32" id="Camada_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><style type="text/css"> .st0{fill-rule:evenodd;clip-rule:evenodd;} </style><path class="st0" d="M12.6,16.1v11.6c0,0.2,0.1,0.3,0.3,0.3h4.6c0.2,0,0.3-0.1,0.3-0.3V15.9h3.4c0.2,0,0.3-0.1,0.3-0.3l0.3-3.6 c0-0.2-0.1-0.3-0.3-0.3h-3.7V9.2c0-0.6,0.5-1.1,1.2-1.1h2.6C21.9,8.1,22,8,22,7.8V4.3C22,4.1,21.9,4,21.7,4h-4.4 c-2.6,0-4.7,1.9-4.7,4.3v3.4h-2.3c-0.2,0-0.3,0.1-0.3,0.3v3.6c0,0.2,0.1,0.3,0.3,0.3h2.3V16.1z"></path></g></svg></a>
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                  <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334q.002-.211-.006-.422A6.7 6.7 0 0 0 16 3.542a6.7 6.7 0 0 1-1.889.518 3.3 3.3 0 0 0 1.447-1.817 6.5 6.5 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.32 9.32 0 0 1-6.767-3.429 3.29 3.29 0 0 0 1.018 4.382A3.3 3.3 0 0 1 .64 6.575v.045a3.29 3.29 0 0 0 2.632 3.218 3.2 3.2 0 0 1-.865.115 3 3 0 0 1-.614-.057 3.28 3.28 0 0 0 3.067 2.277A6.6 6.6 0 0 1 .78 13.58a6 6 0 0 1-.78-.045A9.34 9.34 0 0 0 5.026 15"/>
+                </svg></a>
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                  <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+                </svg></a>
+                <a href="#"><svg fill="#ffffff" width="40px" height="40px" viewBox="0 0 32.00 32.00" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" stroke-width="0.00032"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.8960000000000001"></g><g id="SVGRepo_iconCarrier"><path d="M22.396 21.104H21.2v-.707c0-.299.298-.597.596-.597h.103c.302 0 .603.298.603.597v.707h-.106zM17.795 19.6c-.298 0-.6.2-.6.498v3.405c0 .298.205.5.6.5.301 0 .602-.202.602-.5v-3.5c-.002-.203-.301-.403-.602-.403zm7.406-1.9v6.497c0 1.604-1.402 2.803-3.003 2.803H9.797c-1.6 0-2.998-1.3-2.998-2.803V17.7c0-1.599 1.301-2.802 2.998-2.802H22.1c1.699 0 3.101 1.204 3.101 2.802zm-14.502 7.204v-6.809H12.2v-.992H8.1v.992h1.299v6.899l1.3-.09zm4.501-5.8h-1.203v4.492c0 .204-.197.301-.397.301-.101 0-.302-.097-.302-.395v-4.506h-1.3V23.8c0 .298 0 .696.301.899.602.398 1.698-.096 1.901-.697v.795h1v-5.693zm4.098 4.098V20.2c0-1.203-.901-1.899-1.998-.902v-2.299h-1.302v7.799h1.001l.104-.495c1.4 1.295 2.195.397 2.195-1.101zm3.997-.402h-.99v.703c0 .298-.205.5-.509.5h-.198c-.302 0-.494-.202-.494-.5v-1.401h2.191v-2.396c-.193-1.104-1.697-1.309-2.492-.706-.203.202-.408.405-.5.706-.103.3-.207.691-.207 1.294v1.8c0 3.096 3.5 2.705 3.199 0zm-4.9-9.801c.107.203.201.3.303.399.104.104.301.104.501.104.204 0 .298-.104.504-.203.097-.097.3-.3.396-.498v.498H21.5V7.301h-1.104v4.698c0 .301-.192.502-.494.502-.301 0-.498-.201-.498-.502V7.4h-1.198v5.101c.093.197.093.3.189.498zm-4.297-3.397c0-.6 0-1 .103-1.401.097-.3.301-.599.499-.798a1.66 1.66 0 0 1 .999-.301c.3 0 .598.098.803.2.197.101.396.3.498.498.104.203.195.401.301.603 0 .199.102.5.102.998V11c0 .602 0 .999-.102 1.202 0 .299-.104.496-.301.698a1.237 1.237 0 0 1-.498.498 1.86 1.86 0 0 1-.803.201c-.298 0-.599 0-.8-.099-.199-.103-.397-.203-.5-.399a5.108 5.108 0 0 1-.299-.703c-.102-.299-.102-.7-.102-1.197l.1-1.599zm1.102 2.397c0 .301.301.603.601.603.301 0 .596-.302.596-.603V8.798c0-.301-.295-.599-.596-.599-.3 0-.601.298-.601.599v3.201zM11.3 13.6h1.3V9.001L14.2 5h-1.503L11.9 8.001 10.999 5H9.6l1.7 4.001V13.6z"></path></g></svg></a>
+            </div>
+    
+            <!-- Footer Content -->
+            <div class="row footer-content">
+                <!-- About Us -->
+                <div class="col-lg-3 col-md-6 col-12">
+                    <h4>ABOUT US</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum dolor sit amet.</p>
+                </div>
+    
+                <!-- Newsletter -->
+                <div class="col-lg-3 col-md-6 col-12">
+                    <h4>Newsletter</h4>
+                    <input type="email" class="form-control" placeholder="Enter your email">
+                    <button class="btn btn-subscribe">SUBSCRIBE</button>
+                </div>
+    
+                <!-- Need Help -->
+                <div class="col-lg-3 col-md-6 col-12">
+                    <h4>NEED HELP</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum dolor sit amet.</p>
+                </div>
+    
+                <!-- Contact Us -->
+                <div class="col-lg-3 col-md-6 col-12">
+                    <h4>CONTACT US</h4>
+                    <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                      <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                    </svg> Gb road 123 London UK</p>
+                    <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+                    </svg> +01 12345678901</p>
+                    <p><svg fill="#bbbbbb" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0 0 512 512" xml:space="preserve" stroke="#bbbbbb"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="7935ec95c421cee6d86eb22ecd12600d"> <path style="display: inline;" d="M170.591,239.406L1.584,429.263c-0.433-1.911-1.084-3.759-1.084-5.852V88.589 c0-2.541,0.71-4.837,1.356-7.144L170.591,239.406z M493.987,65.524c-1.238-0.277-2.424-0.876-3.79-0.876H21.819 c-1.297,0-2.456,0.599-3.769,0.876l237.961,222.734L493.987,65.524z M262.808,313.021c-1.954,1.869-4.372,2.777-6.797,2.777 c-2.419,0-4.842-0.908-6.775-2.777l-62.21-58.217L16.656,446.145c1.698,0.523,3.364,1.207,5.163,1.207h468.378 c1.89,0,3.534-0.684,5.243-1.207L325.082,254.804L262.808,313.021z M341.494,239.406l168.98,189.836 c0.459-1.911,1.025-3.759,1.025-5.831V88.589c0-2.499-0.62-4.837-1.26-7.133L341.494,239.406z"> </path> </g> </g></svg> demo@gmail.com</p>
+                </div>
+            </div>
+    
+            <!-- Footer Bottom -->
+            <div class="text-center footer-bottom">
+                <p>© 2025 All Rights Reserved By Free HTML Templates</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
