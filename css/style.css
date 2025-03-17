@@ -23,9 +23,8 @@ body {
     z-index: 1000;
 }
 
-.navbar-brand {
-    font-size: 1.5rem;
-    font-weight: bold;
+.navbar-brand img{
+   height: 36px;
 }
 
 .navbar-menu {
@@ -95,6 +94,10 @@ body {
     .navbar-toggler {
         display: block;
     }
+    .navbar-brand img{
+        height: 35px;
+    }
+
 
     .navbar-menu {
         display: none;
@@ -127,6 +130,12 @@ body {
         margin: 5px 0;
     }
 }
+@media (max-width: 576px) {
+    .navbar-brand img{
+        height: 30px;
+    }
+    
+}
 
 /* Modal Styles */
 .modal-content {
@@ -151,6 +160,10 @@ body {
     font-weight: bold;
     border: none;
     padding: 10px 20px;
+}
+.slider_section .btn:hover {
+    background-color: #fff;
+    color: #ff5e78;
 }
 .slider_section .carousel_btn-box {
     position: absolute;
@@ -342,7 +355,8 @@ body {
 }
 
 .buy-now-btn:hover {
-    background-color: #005b8f;
+    color: #005b8f;
+    background-color: white;
 }
 
 .see-more-btn {
@@ -351,7 +365,8 @@ body {
 }
 
 .see-more-btn:hover {
-    background-color: #f1f1f1;
+    background-color: black;
+    color: #f1f1f1;
 }
 
 /* Image Styling */
@@ -525,7 +540,9 @@ body {
 }
 
 .btn-light:hover {
-    background: #ddd;
+   color: #ddd;
+   background-color: #000;
+
 }
 
 .btn-purple {
@@ -534,7 +551,8 @@ body {
 }
 
 .btn-purple:hover {
-    background: #7A1EA8;
+   color: #7A1EA8;
+   background-color: #fff;
 }
 
 /* Responsive Design */
@@ -626,7 +644,7 @@ body {
     resize: none;
 }
 
-.contact-form .btn {
+.contact-form .sebtn {
     width: 50%;
     padding: 12px;
     font-size: 18px;
@@ -648,7 +666,7 @@ body {
         padding: 15px;
     }
 
-    .contact-form .btn {
+    .contact-form .sebtn {
         font-size: 14px;
     }
 }
@@ -665,8 +683,8 @@ body {
     .contact-form {
         padding: 20px;
     }
-     .contact-form .btn {
-     margin-right: 15%;
+    .sebtn{
+        margin-right: 20%;
     }
 }
 
@@ -679,9 +697,9 @@ body {
         height: 250px;
     }
 
-    .contact-form .btn {
+    .contact-form .sebtn {
         padding: 10px;
-     margin-right: 20%;
+        margin-left: 20%;
     }
 }
 
